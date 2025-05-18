@@ -1,0 +1,29 @@
+// https://chatgpt.com/c/682a05ea-d3e4-8000-97b7-bd1960092fb3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artist Gallery</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🎨 Artist Gallery & Sales</h1>
+
+  <form id="artForm">
+    <input type="text" id="title" placeholder="Artwork Title" required />
+    <textarea id="description" placeholder="Description" rows="3" required></textarea>
+    <input type="number" id="price" placeholder="Price (USD)" required />
+    <input type="url" id="imageURL" placeholder="Image URL (direct link)" required />
+    <select id="status">
+      <option value="For Sale">For Sale</option>
+      <option value="Sold">Sold</option>
+    </select>
+    <button type="submit">Post Artwork</button>
+  </form>
+
+  <div class="gallery" id="gallery"></div>
+
+</body>
+</html>

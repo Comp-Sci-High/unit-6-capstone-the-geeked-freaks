@@ -20,19 +20,18 @@ const Artist = mongoose.model("Artist", artistSchemaSchema, "Artists");
 
 app.get("/artSale", async (req, res) => {
     const artists = await Artist.find({});
-    res.render("alma.ejs", { artists });
+    res.render("artist.ejs", { artists });
 });
 
-app.patch("/art", async (req, res) => {
-const response = await _______.______________(_______)
+app.patch("/patch/:id", async (req, res) => {
+const response = await Artist.findByIdAndUpdate({_id: req.body.id})
 res.json(response);
 });
 
 app.post("/ArtGallery", async (req, res) => {
-const response = await _______.______________(_______)
+const response = await ArtGallery.save(req.body)
 res.json(response);
 });
-
 
 
 app.delete("/main/delete/:accountName", async(req,res) =>{
