@@ -10,15 +10,17 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 const artistSchema = new moongoose.Schema({
-    accountName: { type: String, required: true },
+    artName: { type: String, required: true },
+    Description: {type: String},
+    medium: {type: String},
     image: {type: String , default:""},
-    Price: {type: Number},
+    price: {type: Number},
     forSale: {type: Boolean}
 })
 
 const Artist = mongoose.model("Artist", artistSchemaSchema, "Artists");
 
-app.get("/artSale", async (req, res) => {
+app.get("/", async (req, res) => {
     const artists = await Artist.find({});
     res.render("artist.ejs", { artists });
 });
@@ -34,9 +36,9 @@ res.json(response);
 });
 
 
-app.delete("/main/delete/:accountName", async(req,res) =>{
-  const response = await Artist.findOneAndDelete({
-    artist: req.params.name
+app.delete("/main/delete/:artName", async(req,res) =>{
+  const response = await Art.findOneAndDelete({
+    _id: req.params.id
   })
   res.json(response);
 })

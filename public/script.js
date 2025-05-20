@@ -1,39 +1,21 @@
  console.log("Sever Running")
 
- async function getArtist(){
-    
-    const response = await fetch("...")
-    const data = await response.json()
-    console.log(data)
+
+async function deleteStudent(id){
+    await fetch('/delete/' + id, {method: "DELETE"});
+    window.location.href = "/"
 }
 
-getArtist()
+async function editStudent(e, id){
+   e.preventDefault();
 
+   const formData = new FormData(e.target);
+   const formObject = Object.fromEntries(formData.entries())
 
-
-
-const form = document.getElementById('artForm');
-    const gallery = document.getElementById('gallery');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const title = document.getElementById('title').value;
-      const description = document.getElementById('description').value;
-      const price = document.getElementById('price').value;
-      const imageURL = document.getElementById('imageURL').value;
-      const status = document.getElementById('status').value;
-
-      const artCard = document.createElement('div');
-      artCard.classList.add('art-card');
-      artCard.innerHTML = `
-        <img src="${imageURL}" alt="${title}" />
-        <h3>${title}</h3>
-        <p>${description}</p>
-        <p><strong>Price:</strong> $${price}</p>
-        <p class="status ${status === 'Sold' ? 'sold' : ''}">${status}</p>
-      `;
-
-      gallery.prepend(artCard);
-      form.reset();
-    });
+   await fetch('/patch/' + id, {
+    method: 'PATCH',
+    headers: {'Content-Type' : 'application/json'},
+    body: JSON.stringify(formObject)
+   });
+    window.location.href = '/'
+}
