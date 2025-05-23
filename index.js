@@ -9,16 +9,16 @@ app.use(express.json());
 
 app.set("view engine", "ejs");
 
-const artistSchema = new moongoose.Schema({
-    artName: { type: String, required: true },
-    Description: {type: String},
+const artistSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    description: {type: String},
     medium: {type: String},
     image: {type: String , default:""},
     price: {type: Number},
     forSale: {type: Boolean}
 })
 
-const Artist = mongoose.model("Artist", artistSchemaSchema, "Artists");
+const Artist = mongoose.model("Artist", artistSchema, "Artists");
 
 app.get("/", async (req, res) => {
     const artists = await Artist.find({});
@@ -48,9 +48,6 @@ app.delete("/main/delete/:artName", async(req,res) =>{
 async function artistServer() {
     
     await mongoose.connect("mongodb+srv://SE12:CSH2025@cluster0.gc1au.mongodb.net/Aruna?retryWrites=true&w=majority&appName=Cluster0");
-
-    
-     artistServer()
 
     app.listen(3000, () => {
         console.log(`Server running.`);
