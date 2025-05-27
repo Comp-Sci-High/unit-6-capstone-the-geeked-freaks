@@ -27,5 +27,19 @@
     <% } %>
   </div>
 
+
+
+ 
+                <form onsubmit="editArtists(event, '<%= artists[i]._id %>')">
+                  <input name="name" value="<%= artists[i].name %>" />
+                  <input name="description" value="<%= artists[i].description %>" />
+                  <input name="medium" value="<%= artists[i].medium %>" />
+                  <input name="image" value="<%= artists[i].image %>" />
+                  <input name="price" type="price" value="<%= artists[i].price %>" />
+                  <input name="forSale" type="Boolean" value="<%= artists[i].forSale %>" />
+                  <button type="submit">Update</button>
+                </form>
+            
+
 </body>
 </html>

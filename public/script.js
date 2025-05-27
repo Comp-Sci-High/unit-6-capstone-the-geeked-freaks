@@ -19,3 +19,4 @@ async function editStudent(e, id){
    });
     window.location.href = '/'
 }
+
