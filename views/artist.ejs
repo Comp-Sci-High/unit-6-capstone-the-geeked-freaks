@@ -29,7 +29,7 @@
 
 
 
- 
+  <div class="card">
                 <form onsubmit="editArtists(event, '<%= artists[i]._id %>')">
                   <input name="name" value="<%= artists[i].name %>" />
                   <input name="description" value="<%= artists[i].description %>" />
@@ -39,7 +39,8 @@
                   <input name="forSale" type="Boolean" value="<%= artists[i].forSale %>" />
                   <button type="submit">Update</button>
                 </form>
-            
+              </div>
 
+              <button onclick="updateArtist('<%= artists[i]._id %>')">Update</button>
 </body>
 </html>

@@ -6,7 +6,7 @@ async function deleteStudent(id){
     window.location.href = "/"
 }
 
-async function editStudent(e, id){
+async function editArtist(e, id){
    e.preventDefault();
 
    const formData = new FormData(e.target);
