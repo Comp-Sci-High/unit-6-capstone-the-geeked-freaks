@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Student Grades</title>
+  <title>Art Gallery</title>
   <link rel="stylesheet" href="/style.css">
   <script src="/script.js" defer></script>
 </head>
@@ -10,37 +10,62 @@
   <h1>🎨 Artist Gallery & Sales</h1>
 
   <div class="card-container">
-    <% for(let i = 0; i < artists.length; i++){ %>
+   <% for(let i = 0; i < artPieces.length; i++){ %>
       <div class="card">
-        <img src="<%= artists[i].image %>" alt="Profile Picture">
-        <h2><%= artists[i].name %></h2>
-        <p>Description: <%= artists[i].description %></p>
-        <p>Price: <%= artists[i].price %></p>
-        <% if(artists[i].forSale === true){ %>
-          <p>forSale: Available </p>
-       <% } else { %>
-          <p>forSale: Not Available   </p>
-       <% } %>
+        <img src="<%= artPieces[i].image %>" alt="Art Image">
+        <h2><%= artPieces[i].title %></h2>
+        <p>Description: <%= artPieces[i].description %></p>
+        <p>Medium: <%= artPieces[i].medium %></p>
+        <p>Price: <%= artPieces[i].price %></p>
+        <% if(artPieces[i].forSale){ %>
+          <p>Status: Available</p>
+        <% } else { %>
+          <p>Status: Not Available</p>
+        <% } %>
         
+   <form onsubmit=" artPieces(event, '<%= artPieces[i]._id %>')">
+     <input name="title" value="<%= artPieces[i].title %>" />
+    <input name="description" value="<%= artPieces[i].description %>" />
+  <input name="medium" value="<%= artPieces[i].medium %>" />
+ <input name="image" value="<%= artPieces[i].image %>" />
+   <input name="price" type="number" value="<%= artPieces[i].price %>" />
+  <input name="forSale"  value="<%= artPieces[i].forSale %>" />
+ <button type="submit">Post</button>
+  </form>
+              
+              
+              <button onclick="artPieces('<%= artPieces[i]._id %>')">Post</button>
 
-      </div>
-    <% } %>
-  </div>
 
 
-
-  <div class="card">
-                <form onsubmit="editArtists(event, '<%= artists[i]._id %>')">
-                  <input name="name" value="<%= artists[i].name %>" />
-                  <input name="description" value="<%= artists[i].description %>" />
-                  <input name="medium" value="<%= artists[i].medium %>" />
-                  <input name="image" value="<%= artists[i].image %>" />
-                  <input name="price" type="price" value="<%= artists[i].price %>" />
-                  <input name="forSale" type="Boolean" value="<%= artists[i].forSale %>" />
+                <form onsubmit="editArt(event, '<%= artPieces[i]._id %>')">
+                  <input name="title" value="<%= artPieces[i].title %>" />
+                  <input name="description" value="<%= artPieces[i].description %>" />
+                  <input name="medium" value="<%= artPieces[i].medium %>" />
+                  <input name="image" value="<%= artPieces[i].image %>" />
+                  <input name="price" type="number" value="<%= artPieces[i].price %>" />
+                  <input name="forSale"  value="<%= artPieces[i].forSale %>" />
                   <button type="submit">Update</button>
                 </form>
-              </div>
+              
+              
+              <button onclick="editArt('<%= artPieces[i]._id %>')">Update</button>
 
-              <button onclick="updateArtist('<%= artists[i]._id %>')">Update</button>
+              
+                <form onsubmit="deleteArt(event, '<%= artPieces[i]._id %>')">
+                  <input name="title" value="<%= artPieces[i].title %>" />
+                  <input name="description" value="<%= artPieces[i].description %>" />
+                  <input name="medium" value="<%= artPieces[i].medium %>" />
+                  <input name="image" value="<%= artPieces[i].image %>" />
+                  <input name="price" type="number" value="<%= artPieces[i].price %>" />
+                  <input name="forSale"  value="<%= artPieces[i].forSale %>" />
+                  <button type="submit">Delete</button>
+                </form>
+              
+              
+              <button onclick="deleteArt('<%= artPieces[i]._id %>')">Delete</button>
+              </div>
+              <% } %>
+  </div>
 </body>
 </html>

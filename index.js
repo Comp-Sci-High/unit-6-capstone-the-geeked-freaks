@@ -4,42 +4,40 @@ const express = require("express");
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
-
 app.use(express.json());
-
 app.set("view engine", "ejs");
 
-const artistSchema = new mongoose.Schema({
+
+const artSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: {type: String},
     medium: {type: String},
-    image: {type: String , default:""},
+    image: {type: String , default: "" },
     price: {type: Number},
     forSale: {type: Boolean}
 })
 
-const Artist = mongoose.model("Artist", artistSchema, "Artists");
+const Art = mongoose.model("Artist", artSchema, "ArtPieces");
 
 app.get("/", async (req, res) => {
-    const artists = await Artist.find({});
-    res.render("artist.ejs", { artists });
+    const artPieces = await Art.find({});
+    res.render("artist.ejs", { artPieces });
 });
 
 app.patch("/patch/:id", async (req, res) => {
-const response = await Artist.findByIdAndUpdate({_id: req.body.id})
+const response = await Art.findByIdAndUpdate({_id: req.body.id})
 res.json(response);
 });
 
 app.post("/ArtGallery", async (req, res) => {
-const response = await ArtGallery.save(req.body)
+const newArt = new Art(req.body)
+const response = await newArt.save()
 res.json(response);
 });
 
 
-app.delete("/main/delete/:artName", async(req,res) =>{
-  const response = await Art.findOneAndDelete({
-    _id: req.params.id
-  })
+app.delete("/main/delete/:id", async(req,res) =>{
+  const response = await Art.findOneAndDelete({_id: req.params.id})
   res.json(response);
 })
 
