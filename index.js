@@ -19,24 +19,38 @@ const artSchema = new mongoose.Schema({
 
 const Art = mongoose.model("Artist", artSchema, "ArtPieces");
 
-app.get("/", async (req, res) => {
+app.get("/artworks", async (req, res) => {
     const artPieces = await Art.find({});
     res.render("artist.ejs", { artPieces });
 });
 
+app.get("/admin", async (req, res) => {
+    const artPieces = await Art.find({});
+    res.render("admin.ejs", { artPieces });
+});
+
 app.patch("/patch/:id", async (req, res) => {
-const response = await Art.findByIdAndUpdate({_id: req.body.id})
+const response = await Art.findByIdAndUpdate(
+    {_id: req.params.id}, req.body
+)
 res.json(response);
 });
 
-app.post("/ArtGallery", async (req, res) => {
-const newArt = new Art(req.body)
-const response = await newArt.save()
-res.json(response);
+app.post("/love", async (req, res) => {
+const newArt = await new Art({ 
+    name: req.body.name,
+    description: req.body.description,
+    medium: req.body.medium,
+    image: req.body.image,
+    price: req.body.price,
+    forSale: req.body.forSale
+}).save()
+
+res.json(newArt);
 });
 
 
-app.delete("/main/delete/:id", async(req,res) =>{
+app.delete("/delete/:id", async(req,res) =>{
   const response = await Art.findOneAndDelete({_id: req.params.id})
   res.json(response);
 })

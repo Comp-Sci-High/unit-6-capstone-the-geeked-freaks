@@ -1,71 +1,235 @@
+/* style.css */
 body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background-color: #f8c8c8; /* pastel red */
-      color: black;
-    }
+  background-color: #ffcccc; /* pastel red */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+}
 
-    .cards-container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 80px;
-      flex-wrap: wrap;
-    }
+h1 {
+  text-align: center;
+  color: #333;
+}
 
-    .card {
-      background-color: white;
-      width: 280px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 250px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
 
-    .card-content {
-      padding: 20px;
-    }
+.card p {
+  font-size: 0.95rem;
+}
 
-    .card-content h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
+.navbar {
+  background-color: #a2d2ff; /* pastel blue */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-    .card-content p {
-      font-size: 0.95rem;
-      color: #333;
-    }
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .main-button {
-      display: block;
-      margin: 50px auto;
-      padding: 12px 28px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 25px;
-      background-color: #d7bce8; /* pastel purple */
-      color: black;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
 
-    .main-button:hover {
-      background-color: black;
-      color: white;
-      transform: scale(1.05);
-    }
+.nav-links a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
 
+.nav-links a:hover {
+  color: #6c5ce7; /* pastel purple on hover */
+}
+
+/* General form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  margin: 1rem auto;
+}
+
+/* Label and input pair styling */
+form label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Input fields */
+form input[type="text"],
+form input[type="number"],
+form input[type="url"],
+form input[type="email"],
+form input[type="checkbox"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Checkbox inline with label */
+form label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+form button {
+  background-color: #cdb4db; /* pastel purple */
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form button:hover {
+  background-color: #b28fcf;
+}
+
+/* Container for cards */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Each card */
+.card {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Form inside the card */
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Input fields */
+.card input[type="text"],
+.card input[type="number"],
+.card input[type="url"],
+.card input[type="email"],
+.card input[type="checkbox"] {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+/* Label for checkbox */
+.card label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* Update button */
+.card button[type="submit"] {
+  margin-top: 0.5rem;
+  background-color: #cdb4db;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card button[type="submit"]:hover {
+  background-color: #b28fcf;
+}
+
+/* Delete button */
+.card .delete-button {
+  margin-top: 0.5rem;
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card .delete-button:hover {
+  background-color: #e55656;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.carousel img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 

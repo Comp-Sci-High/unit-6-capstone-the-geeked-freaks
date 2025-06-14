@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">🎨 Art Gallery</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/artworks">Artworks</a>
+    </div>
+  </div>
+</nav>
+
+    <h1>🎨 Artist Gallery & Sales</h1>
+    <h2>Add New Art Piece</h2>
+    <form>
+        <label>Title: </label>
+        <input name="name" />
+         <label>Description: </label>
+        <input name="description" />
+         <label>Medium: </label>
+        <input name="medium" />
+         <label>Image: </label>
+        <input name="image" />
+         <label>Price: </label>
+        <input name="price" type="number" />
+         <label>forSale: </label>
+        <input name="forSale" />
+        <button>Post</button>
+    </form>
+    <h2>Edit Existing Art Pieces</h2>
+    <div class="card-container">
+        <% for(let i=0; i < artPieces.length; i++){ %>
+          <div class="card">
+            <form onsubmit="editArt(event, '<%= artPieces[i]._id %>')">
+                <input name="name" value="<%= artPieces[i].name %>" />
+                <input name="description" value="<%= artPieces[i].description %>" />
+                <input name="medium" value="<%= artPieces[i].medium %>" />
+                <input name="image" value="<%= artPieces[i].image %>" />
+                <input name="price" type="number" value="<%= artPieces[i].price %>" />
+                <input name="forSale" value="<%= artPieces[i].forSale %>" />
+                <button onclick="editArt('<%= artPieces[i]._id %>')">Update</button>
+            </form>
+
+            
+            <button onclick="deleteArt('<%= artPieces[i]._id %>')">Delete</button>
+    </div>
+    <% } %>
+    </div>
+</body>
+
+</html>
